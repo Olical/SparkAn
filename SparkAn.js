@@ -189,6 +189,22 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		if(p == 'opacity') {
 			unit = '';
 		}
+		
+		// Loop through each frame
+		for(var i = 0; i <= frames; i++) {
+			setTimeout((function(exti, extelement, extp, extoriginal, extchange, extunit) {
+				return function() {
+					setStyle(extelement, extp, (extoriginal + (extpixels * exti)) + extunit);
+				}
+			})(i, element, p, original, change, unit), i * (1000 / fps), element, p, change, pixels, unit);
+		}
+		
+		// Stop the floating point problem
+		setTimeout((function(extelement, extp, extproperties) {
+			return function() {
+				setStyle(extelement, extp, extproperties[extp]);
+			}
+		})(element, p, properties), timeframe, element, p, properties);
 	}
 	
 	// Set callback timer
