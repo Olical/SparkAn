@@ -155,6 +155,14 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	// Set up the FPS
 	var fps = 60;
 	
+	// Set up any required variables
+	var computed = null;
+	var original = null;
+	var difference = null;
+	var frames = null;
+	var change = null;
+	var unit = null;
+	
 	// Loop through all of the properties
 	for(var p in properties) {
 		// Make sure the style is set
@@ -169,6 +177,18 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		
 		// Get the original
 		original = (p == 'opacity') ? parseFloat(element.style[p]) : parseInt(element.style[p]);
+		
+		// Work out the difference
+		difference = ((p == 'opacity') ? parseFloat(properties[p]) : parseInt(properties[p])) - original;
+		
+		// Work out how many frames
+		frames = timeframe / (1000 / fps);
+		
+		// Work out change
+		change = difference / frames;
+		
+		// Work out the unit of measurement
+		unit = (isNaN(properties[p])) ? properties[p].replace(/[0-9]/g, '') : 'px';
 	}
 }
 
