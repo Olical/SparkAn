@@ -136,4 +136,9 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 			return easeOutBounce (t*2-d, 0, c, d) * .5 + c*.5 + b;
 		}
 	};
+	
+	// Set a default timeframe
+	if(!timeframe) {
+		timeframe = 800;
+	}
 }
