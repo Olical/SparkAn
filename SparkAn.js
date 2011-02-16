@@ -159,7 +159,7 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	for(var p in properties) {
 		// Make sure the style is set
 		if(element.style[p] === undefined || element.style[p] === '') {
-			computed = getComputed()[p];
+			computed = getComputed(element)[p];
 			element.style[p] = (computed) ? computed : 1;
 		}
 		
@@ -168,6 +168,17 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		else if(element.style[p] == 'auto' && p == 'width') element.style[p] = element.offsetWidth;
 	}
 }
+
+function getComputed(element) {
+	// If we can use getComputedStyle
+	if(window.getComputedStyle) {
+		// Return getComputedStyle
+		return window.getComputedStyle(element, null);
+	}
+	
+	// Otherwise return currentStyle
+	return element.currentStyle;
+};
 
 function setStyle(element, attribute, value) {
 	// Check if they provided a css object
