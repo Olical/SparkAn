@@ -152,3 +152,28 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		var callback = new Function();
 	}
 }
+
+function setStyle(element, attribute, value) {
+	// Check if they provided a css object
+	if(attribute !== undefined) {
+		// If the selector contains dashes then convert it to the JavaScript version
+		if(c.indexOf('-') !== -1) {
+			element.style[attribute.replace(/-([a-z])/gi, function(s, g1) { return g1.toUpperCase() })] = value;
+		}
+		else {
+			element.style[attribute] = value;
+		}
+		
+		// If opacity is being set we need to set all the other values for cross browser opacity
+		if(attribute == 'opacity') {
+			element.style.MozOpacity = value;
+			element.style.KhtmlOpacity = value;
+			element.style.filter = 'alpha(opacity=' + (value * 100) + ')';
+			element.style.zoom = '1';
+		}
+	}
+	else {
+		// Return the elements attributes
+		return element.style;
+	}
+}
