@@ -1,5 +1,5 @@
 /*!
- * SparkAn - An animation function created for the Spark JavaScript library (sparkjs.co.uk)
+ * SparkAn - A animation function created for the Spark JavaScript library (sparkjs.co.uk)
  * Useable as a standalone function.
  * 
  * Written by Oliver Caldwell (flowdev.co.uk)
@@ -7,6 +7,13 @@
 
 // Create the function
 function SparkAn(element, properties, timeframe, easing, callback) {
+	/*!
+	 * Set up all of the easing methods
+	 * frame (time or t)
+	 * change (c)
+	 * start (begin or b)
+	 * duration (d)
+	 */
 	var easingMethods = {
 		easeInQuad: function (t, b, c, d) {
 			return c*(t/=d)*t + b;
