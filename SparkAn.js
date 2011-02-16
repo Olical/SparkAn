@@ -141,4 +141,9 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	if(!timeframe) {
 		timeframe = 800;
 	}
+	
+	// Set a default callback
+	if(!callback) {
+		callback = new Function();
+	}
 }
