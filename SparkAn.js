@@ -189,6 +189,11 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		
 		// Work out the unit of measurement
 		unit = (isNaN(properties[p])) ? properties[p].replace(/[0-9]/g, '') : 'px';
+		
+		// Make sure we do not have a unit when setting opacity
+		if(p == 'opacity') {
+			unit = '';
+		}
 	}
 }
 
