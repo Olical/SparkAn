@@ -166,6 +166,9 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		// Fix for IE stuff
 		if(element.style[p] == 'auto' && p == 'height') element.style[p] = element.offsetHeight;
 		else if(element.style[p] == 'auto' && p == 'width') element.style[p] = element.offsetWidth;
+		
+		// Get the original
+		original = (p == 'opacity') ? parseFloat(element.style[p]) : parseInt(element.style[p]);
 	}
 }
 
