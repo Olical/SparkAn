@@ -151,6 +151,9 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	if(!callback) {
 		var callback = new Function();
 	}
+	
+	// Set up the FPS
+	var fps = 60;
 }
 
 function setStyle(element, attribute, value) {
