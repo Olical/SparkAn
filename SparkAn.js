@@ -147,11 +147,6 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		var easing = 'inQuad';
 	}
 	
-	// Set a default callback
-	if(!callback) {
-		var callback = new Function();
-	}
-	
 	// Set up the FPS
 	var fps = 60;
 	
@@ -194,6 +189,11 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		if(p == 'opacity') {
 			unit = '';
 		}
+	}
+	
+	// Set callback timer
+	if(callback) {
+		setTimeout(callback, timeframe + this.offset);
 	}
 }
 
