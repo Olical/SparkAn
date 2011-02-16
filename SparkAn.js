@@ -192,11 +192,11 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		
 		// Loop through each frame
 		for(var i = 0; i <= frames; i++) {
-			setTimeout((function(exti, extelement, extp, extoriginal, extchange, extunit) {
+			setTimeout((function(exti, extelement, extp, extoriginal, extchange, extunit, extframes, exteasing) {
 				return function() {
-					setStyle(extelement, extp, (extoriginal + (extchange * exti)) + extunit);
+					setStyle(extelement, extp, easingMethods[exteasing](exti, extchange, extoriginal, extframes) + extunit);
 				}
-			})(i, element, p, original, change, unit), i * (1000 / fps), element, p, change, unit);
+			})(i, element, p, original, change, unit, frames, easing), i * (1000 / fps), element, p, change, unit, frames, easing);
 		}
 		
 		// Stop the floating point problem
