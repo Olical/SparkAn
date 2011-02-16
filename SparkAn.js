@@ -154,6 +154,19 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	
 	// Set up the FPS
 	var fps = 60;
+	
+	// Loop through all of the properties
+	for(var p in properties) {
+		// Make sure the style is set
+		if(element.style[p] === undefined || element.style[p] === '') {
+			computed = getComputed()[p];
+			element.style[p] = (computed) ? computed : 1;
+		}
+		
+		// Fix for IE stuff
+		if(element.style[p] == 'auto' && p == 'height') element.style[p] = element.offsetHeight;
+		else if(element.style[p] == 'auto' && p == 'width') element.style[p] = element.offsetWidth;
+	}
 }
 
 function setStyle(element, attribute, value) {
