@@ -210,7 +210,7 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	
 	// Set callback timer
 	if(callback) {
-		setTimeout(callback, timeframe + this.offset);
+		setTimeout(callback, timeframe);
 	}
 }
 
