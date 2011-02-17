@@ -200,11 +200,11 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		}
 		
 		// Stop the floating point problem
-		setTimeout((function(extelement, extp, extproperties) {
+		setTimeout((function(extelement, extp, extproperties, extunit) {
 			return function() {
-				setStyle(extelement, extp, extproperties[extp]);
+				setStyle(extelement, extp, extproperties[extp] + extunit);
 			}
-		})(element, p, properties), timeframe, element, p, properties);
+		})(element, p, properties, unit), timeframe, element, p, properties, unit);
 	}
 	
 	// Set callback timer
