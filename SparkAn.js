@@ -179,9 +179,6 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		// Work out how many frames
 		frames = timeframe / (1000 / fps);
 		
-		// Work out change
-		change = difference / frames;
-		
 		// Work out the unit of measurement
 		unit = (isNaN(properties[p])) ? properties[p].replace(/[0-9]/g, '') : 'px';
 		
@@ -192,11 +189,11 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		
 		// Loop through each frame
 		for(var i = 0; i <= frames; i++) {
-			setTimeout((function(exti, extelement, extp, extoriginal, extchange, extunit, extframes, exteasing) {
+			setTimeout((function(exti, extelement, extp, extoriginal, extdifference, extunit, extframes, exteasing) {
 				return function() {
-					setStyle(extelement, extp, easingMethods[exteasing](exti, extoriginal, extchange, extframes) + extunit);
+					setStyle(extelement, extp, easingMethods[exteasing](exti, extoriginal, extdifference, extframes) + extunit);
 				}
-			})(i, element, p, original, change, unit, frames, easing), i * (1000 / fps), element, p, change, unit, frames, easing);
+			})(i, element, p, original, difference, unit, frames, easing), i * (1000 / fps), element, p, difference, unit, frames, easing);
 		}
 		
 		// Stop the floating point problem
