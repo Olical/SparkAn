@@ -139,12 +139,12 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	
 	// Set a default timeframe
 	if(!timeframe) {
-		var timeframe = 800;
+		var timeframe = 300;
 	}
 	
 	// Set a default easing
 	if(!easing) {
-		var easing = 'inQuad';
+		var easing = 'swing';
 	}
 	
 	// Set up the FPS
