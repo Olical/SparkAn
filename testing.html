@@ -8,13 +8,13 @@
 	</head>
 	
 	<body>
-		<div id='target' style='width: 100px; height: 100px; background-color: #666666'></div>
+		<div id='target' style='width: 100px; height: 0px; background-color: #666666'></div>
 		
 		<script type='text/javascript' src='SparkAn.js'></script>
 		<script type='text/javascript'>
 			var el = document.getElementById('target');
 			
-			SparkAn(el, {width: 150});
+			SparkAn(el, {height: 150}, 1000, 'outQuad');
 		</script>
 	</body>
 </html>
