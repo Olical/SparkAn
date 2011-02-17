@@ -10,8 +10,8 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	/*!
 	 * Set up all of the easing methods
 	 * frame (time or t)
-	 * change (c)
 	 * start (begin or b)
+	 * change (c)
 	 * duration (d)
 	 */
 	var easingMethods = {
@@ -194,7 +194,7 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		for(var i = 0; i <= frames; i++) {
 			setTimeout((function(exti, extelement, extp, extoriginal, extchange, extunit, extframes, exteasing) {
 				return function() {
-					setStyle(extelement, extp, easingMethods[exteasing](exti, extchange, extoriginal, extframes) + extunit);
+					setStyle(extelement, extp, easingMethods[exteasing](exti, extoriginal, extchange, extframes) + extunit);
 				}
 			})(i, element, p, original, change, unit, frames, easing), i * (1000 / fps), element, p, change, unit, frames, easing);
 		}
