@@ -157,6 +157,7 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 	var frames = null;
 	var change = null;
 	var unit = null;
+	var calculated = null;
 	
 	// Loop through all of the properties
 	for(var p in properties) {
@@ -189,11 +190,14 @@ function SparkAn(element, properties, timeframe, easing, callback) {
 		
 		// Loop through each frame
 		for(var i = 0; i <= frames; i++) {
-			setTimeout((function(exti, extelement, extp, extoriginal, extdifference, extunit, extframes, exteasing) {
+			// Work out the calculated value
+			calculated = easingMethods[easing](i, original, difference, frames) + unit;
+			
+			setTimeout((function(exti, extelement, extp, extcalculated) {
 				return function() {
-					setStyle(extelement, extp, easingMethods[exteasing](exti, extoriginal, extdifference, extframes) + extunit);
+					setStyle(extelement, extp, extcalculated);
 				}
-			})(i, element, p, original, difference, unit, frames, easing), i * (1000 / fps), element, p, difference, unit, frames, easing);
+			})(i, element, p, calculated), i * (1000 / fps), element, p, calculated);
 		}
 		
 		// Stop the floating point problem
