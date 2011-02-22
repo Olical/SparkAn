@@ -1,8 +1,10 @@
 /*!
- * SparkAn - A animation function created for the Spark JavaScript library (sparkjs.co.uk)
- * Useable as a standalone function.
+ * SparkAn - A animation function created for the Spark JavaScript library
+ * http://flowdev.co.uk/
  * 
- * Written by Oliver Caldwell (flowdev.co.uk)
+ * Copyright 2011, Oliver Caldwell
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * https://github.com/Wolfy87/SparkAn
  */
 
 // Create the function
